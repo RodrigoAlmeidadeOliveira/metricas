@@ -47,10 +47,25 @@ lambda x: x.end_time.day
 #Function to calculate CONWIP cards
 
 def calculate_optimal_conwip_cards(avg_lead_time, total_tasks):
-bottleneck_rate = 1 / avg_lead_time if avg_lead_time > 0 else 0  # Bottleneck rate for the system
-critical_wip = bottleneck_rate * avg_lead_time
-optimal_conwip_cards = total_tasks  # Using total tasks as a proxy for throughput
-return optimal_conwip_cards
+    """Estimate the optimal number of CONWIP cards.
+
+    Parameters
+    ----------
+    avg_lead_time : float
+        Average lead time for the period.
+    total_tasks : int
+        Total number of tasks completed in the period.
+
+    Returns
+    -------
+    float
+        Suggested number of CONWIP cards.
+    """
+
+    bottleneck_rate = 1 / avg_lead_time if avg_lead_time > 0 else 0  # Bottleneck rate for the system
+    critical_wip = bottleneck_rate * avg_lead_time
+    optimal_conwip_cards = total_tasks  # Using total tasks as a proxy for throughput
+    return optimal_conwip_cards
 
 #Apply the function to calculate optimal CONWIP cards
 
