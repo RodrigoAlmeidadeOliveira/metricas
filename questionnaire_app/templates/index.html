@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Questionário - Contato Visual</title>
+</head>
+<body>
+    <h1>Desenvolvimento de habilidades comunicativas</h1>
+    <h2>Contato visual</h2>
+    <p><strong>Pontuação:</strong></p>
+    <ul>
+        <li>1. Nunca ou raramente (de cada 10 situações reage dessa forma sem necessidade de ajuda no máximo 2 vezes)</li>
+        <li>2. Com pouca frequência (de cada 10 situações desse tipo reage dessa forma sem
+            necessidade de ajuda 3 a 4 vezes)</li>
+        <li>3. Com regular frequência (de cada 10 situações reage dessa forma sem necessidade de ajuda 4 a 6 vezes)</li>
+        <li>4. Muito frequentemente (de cada 10 situações reage dessa forma sem necessidade de ajuda 6 a 8 vezes)</li>
+        <li>5. Sempre ou quase sempre (de cada 10 situações reage dessa forma sem necessidade de ajuda 8 a 10 vezes)</li>
+    </ul>
+    <form method="post">
+        {% for idx, question in enumerate(questions, start=1) %}
+            <fieldset>
+                <legend>{{ idx }}. {{ question }}</legend>
+                {% for value, description in options.items() %}
+                    <label>
+                        <input type="radio" name="q{{ idx }}" value="{{ value }}" required>
+                        {{ value }}
+                    </label>
+                {% endfor %}
+            </fieldset>
+            <br>
+        {% endfor %}
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

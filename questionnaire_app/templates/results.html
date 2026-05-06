@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Respostas Registradas</title>
+</head>
+<body>
+    <h1>Respostas registradas</h1>
+    <ul>
+        {% for idx, question in enumerate(questions, start=1) %}
+            <li>{{ idx }}. {{ question }}: {{ responses[idx-1] }} - {{ options[responses[idx-1]] }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('questionnaire') }}">Responder novamente</a>
+</body>
+</html>
